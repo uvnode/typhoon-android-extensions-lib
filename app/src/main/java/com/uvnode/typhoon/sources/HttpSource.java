@@ -5,6 +5,7 @@ import com.uvnode.typhoon.sources.model.Genre;
 import com.uvnode.typhoon.sources.model.Listing;
 import com.uvnode.typhoon.sources.model.Ranking;
 import com.uvnode.typhoon.sources.model.Series;
+import com.uvnode.typhoon.sources.model.Source;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -43,6 +44,8 @@ public abstract class HttpSource {
     public abstract ArrayList<Listing> getEpisodes(Series series);
 
     public abstract HashMap<String, Object> search(String query, int page);
+
+    public abstract Source getSource();
 
     public void setOkClient(OkHttpClient okClient) {
         this.okClient = okClient;
