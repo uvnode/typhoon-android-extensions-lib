@@ -47,6 +47,10 @@ public abstract class HttpSource {
 
     public abstract Source getSource();
 
+    public OkHttpClient getOkClient() {
+        return okClient;
+    }
+
     public void setOkClient(OkHttpClient okClient) {
         this.okClient = okClient;
     }
