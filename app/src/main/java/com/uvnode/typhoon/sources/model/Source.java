@@ -9,7 +9,7 @@ import android.os.Parcelable;
 
 public class Source implements Parcelable {
     private String id, name, url, image, description;
-    private boolean ready, enabled;
+    private boolean ready;
 
     public Source() {
     }
@@ -21,7 +21,6 @@ public class Source implements Parcelable {
         image = in.readString();
         description = in.readString();
         ready = in.readByte() != 0;
-        enabled = in.readByte() != 0;
     }
 
     @Override
@@ -32,7 +31,6 @@ public class Source implements Parcelable {
         dest.writeString(image);
         dest.writeString(description);
         dest.writeByte((byte) (ready ? 1 : 0));
-        dest.writeByte((byte) (enabled ? 1 : 0));
     }
 
     @Override
@@ -98,14 +96,6 @@ public class Source implements Parcelable {
 
     public void setReady(boolean ready) {
         this.ready = ready;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 
     @Override
