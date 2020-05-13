@@ -25,7 +25,7 @@ public abstract class MetaSource {
 
     public abstract void getEpisodes(ApiCallbacks apiConsumer, Series series);
 
-    public abstract void getVideoLinks(ApiCallbacks apiConsumer, Episode episode);
+    public abstract void getVideoLinks(ApiCallbacks apiConsumer, String episodeLink);
 
     public abstract void search(ApiCallbacks apiConsumer, String query, int page);
 
@@ -41,7 +41,7 @@ public abstract class MetaSource {
 
     public abstract ArrayList<Listing> getEpisodes(Series series);
 
-    public abstract HashMap<String, Object> getVideoLinks(Episode episode);
+    public abstract HashMap<String, Object> getVideoLinks(String episodeLink);
 
     public abstract HashMap<String, Object> search(String query, int page);
 
