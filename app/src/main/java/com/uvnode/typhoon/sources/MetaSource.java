@@ -1,6 +1,7 @@
 package com.uvnode.typhoon.sources;
 
 import com.uvnode.typhoon.sources.api.ApiCallbacks;
+import com.uvnode.typhoon.sources.model.Episode;
 import com.uvnode.typhoon.sources.model.Genre;
 import com.uvnode.typhoon.sources.model.Listing;
 import com.uvnode.typhoon.sources.model.Ranking;
@@ -24,6 +25,8 @@ public abstract class MetaSource {
 
     public abstract void getEpisodes(ApiCallbacks apiConsumer, Series series);
 
+    public abstract void getVideoLinks(ApiCallbacks apiConsumer, Episode episode);
+
     public abstract void search(ApiCallbacks apiConsumer, String query, int page);
 
     // Synchronous
@@ -37,6 +40,8 @@ public abstract class MetaSource {
     public abstract HashMap<String, Object> getSeriesInGenre(Genre genre, int page);
 
     public abstract ArrayList<Listing> getEpisodes(Series series);
+
+    public abstract HashMap<String, Object> getVideoLinks(Episode episode);
 
     public abstract HashMap<String, Object> search(String query, int page);
 
