@@ -17,11 +17,7 @@ public abstract class MetaSource {
 
     public abstract void getRankings(ApiCallbacks apiConsumer);
 
-    public abstract void getGenres(ApiCallbacks apiConsumer);
-
     public abstract void getSeriesInRanking(ApiCallbacks apiConsumer, Ranking ranking);
-
-    public abstract void getSeriesInGenre(ApiCallbacks apiConsumer, Genre genre, int page);
 
     public abstract void getEpisodes(ApiCallbacks apiConsumer, Series series);
 
@@ -33,11 +29,7 @@ public abstract class MetaSource {
 
     public abstract ArrayList<Ranking> getRankings();
 
-    public abstract ArrayList<Genre> getGenres();
-
     public abstract ArrayList<Series> getSeriesInRanking(Ranking ranking);
-
-    public abstract HashMap<String, Object> getSeriesInGenre(Genre genre, int page);
 
     public abstract ArrayList<Listing> getEpisodes(Series series);
 
