@@ -34,7 +34,6 @@ public class JSEClient {
         this.webView.getSettings().setJavaScriptEnabled(true);
         this.webView.getSettings().setDomStorageEnabled(true);
         this.webView.setWebViewClient(this.client);
-        this.webView.addJavascriptInterface(new HtmlAccessor(), "HtmlAccessor");
 
         EventBus.getDefault().register(this);
     }
@@ -54,25 +53,20 @@ public class JSEClient {
 
     }
 
-    class HtmlAccessor {
-        @JavascriptInterface
-        public void getHtml(String html) {
-            if(!Pattern.compile("cf-browser-verification").matcher(html).find()) {
-                JETransmissionEvent jeTransmissionEvent = new JETransmissionEvent();
-                jeTransmissionEvent.data = html;
-                EventBus.getDefault().postSticky(jeTransmissionEvent);
-
-                webView.loadUrl("about:blank");
-            }
-        }
-    }
-
     public static class BrowserEvent {
     }
 
     @Subscribe
     public void onBrowserEvent(BrowserEvent event) {
         Log.e("browser-event", "browser");
+    }
+
+    public void inBackground() {
+
+    }
+
+    public void inForeground() {
+
     }
 }
 
