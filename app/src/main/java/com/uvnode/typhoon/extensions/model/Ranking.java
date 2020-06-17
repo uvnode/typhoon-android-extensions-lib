@@ -1,30 +1,33 @@
-package com.uvnode.typhoon.sources.model;
+package com.uvnode.typhoon.extensions.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Genre implements Parcelable {
+/**
+ * Created by Riyadh on 5/31/2016.
+ */
+public class Ranking implements Parcelable {
 
     private String id, name, url;
 
-    public Genre() {
+    public Ranking() {
     }
 
-    protected Genre(Parcel in) {
+    protected Ranking(Parcel in) {
         id = in.readString();
         name = in.readString();
         url = in.readString();
     }
 
-    public static final Creator<Genre> CREATOR = new Creator<Genre>() {
+    public static final Creator<Series> CREATOR = new Creator<Series>() {
         @Override
-        public Genre createFromParcel(Parcel in) {
-            return new Genre(in);
+        public Series createFromParcel(Parcel in) {
+            return new Series(in);
         }
 
         @Override
-        public Genre[] newArray(int size) {
-            return new Genre[size];
+        public Series[] newArray(int size) {
+            return new Series[size];
         }
     };
 
@@ -58,9 +61,11 @@ public class Genre implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(id);
-        parcel.writeString(name);
-        parcel.writeString(url);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(url);
     }
+
+
 }

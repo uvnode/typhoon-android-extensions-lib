@@ -1,21 +1,13 @@
-package com.uvnode.typhoon.sources.executor;
+package com.uvnode.typhoon.extensions.executor;
 
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
-import android.webkit.CookieManager;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-
-import java.util.regex.Pattern;
 
 /**
  * Created by Riyadh on 7/26/2017.

@@ -1,6 +1,6 @@
-package com.uvnode.typhoon.sources;
+package com.uvnode.typhoon.extensions;
 
-import com.uvnode.typhoon.sources.executor.JSEClient;
+import com.uvnode.typhoon.extensions.executor.JSEClient;
 
 import okhttp3.OkHttpClient;
 

@@ -1,12 +1,10 @@
-package com.uvnode.typhoon.sources;
+package com.uvnode.typhoon.extensions;
 
-import com.uvnode.typhoon.sources.api.ApiCallbacks;
-import com.uvnode.typhoon.sources.model.Episode;
-import com.uvnode.typhoon.sources.model.Genre;
-import com.uvnode.typhoon.sources.model.Listing;
-import com.uvnode.typhoon.sources.model.Ranking;
-import com.uvnode.typhoon.sources.model.Series;
-import com.uvnode.typhoon.sources.model.Source;
+import com.uvnode.typhoon.extensions.api.ApiCallbacks;
+import com.uvnode.typhoon.extensions.model.Listing;
+import com.uvnode.typhoon.extensions.model.Ranking;
+import com.uvnode.typhoon.extensions.model.Series;
+import com.uvnode.typhoon.extensions.model.Source;
 
 import java.util.ArrayList;
 import java.util.HashMap;

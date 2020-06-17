@@ -1,4 +1,4 @@
-package com.uvnode.typhoon.sources.model;
+package com.uvnode.typhoon.extensions.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

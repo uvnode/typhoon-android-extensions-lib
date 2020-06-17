@@ -1,4 +1,4 @@
-package com.uvnode.typhoon.sources.api;
+package com.uvnode.typhoon.extensions.api;
 
 import java.io.IOException;
 
