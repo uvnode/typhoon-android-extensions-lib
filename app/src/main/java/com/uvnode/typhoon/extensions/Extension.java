@@ -10,15 +10,7 @@ public class Extension {
     private int versionCode;
     private ArrayList<MetaSource> sources;
 
-    public Extension(String name) {
-        this(name, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE, BuildConfig.APPLICATION_ID);
-    }
-
-    public Extension(String name, String version, int versionCode, String packageName) {
-        this.name = name;
-        this.version = version;
-        this.versionCode = versionCode;
-        this.packageName = packageName;
+    public Extension() {
     }
 
     public String getName() {
