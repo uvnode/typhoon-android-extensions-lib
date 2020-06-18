@@ -10,8 +10,8 @@ public class Extension {
     private int versionCode;
     private ArrayList<MetaSource> sources;
 
-    public static Extension createDefault(String name) {
-        return new Extension(name, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE, BuildConfig.APPLICATION_ID);
+    public Extension(String name) {
+        this(name, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE, BuildConfig.APPLICATION_ID);
     }
 
     public Extension(String name, String version, int versionCode, String packageName) {
