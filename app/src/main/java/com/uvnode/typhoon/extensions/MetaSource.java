@@ -11,6 +11,16 @@ import java.util.HashMap;
 
 public abstract class MetaSource {
 
+    private boolean enabled;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     // Asynchronous
 
     public abstract void getRankings(ApiCallbacks apiConsumer);

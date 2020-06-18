@@ -1,10 +1,12 @@
 package com.uvnode.typhoon.extensions;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class Extension {
+public class Extension implements Parcelable {
 
     private String name, icon, version, author, packageName;
     private int versionCode;
@@ -12,6 +14,27 @@ public class Extension {
 
     public Extension() {
     }
+
+    protected Extension(Parcel in) {
+        name = in.readString();
+        icon = in.readString();
+        version = in.readString();
+        author = in.readString();
+        packageName = in.readString();
+        versionCode = in.readInt();
+    }
+
+    public static final Creator<Extension> CREATOR = new Creator<Extension>() {
+        @Override
+        public Extension createFromParcel(Parcel in) {
+            return new Extension(in);
+        }
+
+        @Override
+        public Extension[] newArray(int size) {
+            return new Extension[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -67,5 +90,20 @@ public class Extension {
 
     public ArrayList<MetaSource> getSources() {
         return sources;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(icon);
+        parcel.writeString(version);
+        parcel.writeString(author);
+        parcel.writeString(packageName);
+        parcel.writeInt(versionCode);
     }
 }
