@@ -9,10 +9,6 @@ import android.webkit.WebViewClient;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-/**
- * Created by Riyadh on 7/26/2017.
- */
-
 public class JSEClient {
 
     private Context context;

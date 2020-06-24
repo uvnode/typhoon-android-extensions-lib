@@ -13,6 +13,8 @@ public abstract class HttpSource extends MetaSource{
         return okClient;
     }
 
+    public JSEClient getJseClient() { return jseClient; };
+
     public void setOkClient(OkHttpClient okClient) {
         this.okClient = okClient;
     }

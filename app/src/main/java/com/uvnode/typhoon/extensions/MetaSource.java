@@ -27,6 +27,8 @@ public abstract class MetaSource {
 
     public abstract void getSeriesInRanking(ApiCallbacks apiConsumer, Ranking ranking);
 
+    public abstract void getSeries(ApiCallbacks apiConsumer, Series series);
+
     public abstract void getEpisodes(ApiCallbacks apiConsumer, Series series);
 
     public abstract void getVideoLinks(ApiCallbacks apiConsumer, String episodeLink);
@@ -38,6 +40,8 @@ public abstract class MetaSource {
     public abstract ArrayList<Ranking> getRankings();
 
     public abstract ArrayList<Series> getSeriesInRanking(Ranking ranking);
+
+    public abstract Series getSeries(Series series);
 
     public abstract ArrayList<Listing> getEpisodes(Series series);
 

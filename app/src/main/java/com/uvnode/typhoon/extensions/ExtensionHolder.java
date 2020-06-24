@@ -3,14 +3,14 @@ package com.uvnode.typhoon.extensions;
 public class ExtensionHolder {
 
     private Extension extension;
-    private String repo;
+    private String repoId;
     private boolean isInstalled;
 
     public ExtensionHolder() {
     }
 
     public String getRepo() {
-        return repo;
+        return repoId;
     }
 
     public Extension getExtension() {
@@ -21,8 +21,8 @@ public class ExtensionHolder {
         this.extension = extension;
     }
 
-    public void setRepo(String repo) {
-        this.repo = repo;
+    public void setRepo(String repoId) {
+        this.repoId = repoId;
     }
 
     public boolean isInstalled() {
