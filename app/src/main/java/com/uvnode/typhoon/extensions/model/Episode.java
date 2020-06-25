@@ -3,18 +3,13 @@ package com.uvnode.typhoon.extensions.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by Riyadh on 5/31/2016.
- */
 public class Episode implements Parcelable {
 
-    private String id, title, url, image;
-
-    public Episode()    {
-    }
+    private String id, num, title, url, image;
 
     protected Episode(Parcel in) {
         id = in.readString();
+        num = in.readString();
         title = in.readString();
         url = in.readString();
         image = in.readString();
@@ -38,6 +33,14 @@ public class Episode implements Parcelable {
 
     public void setId(String id)   {
         this.id = id;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
     }
 
     public String getTitle() {
@@ -70,10 +73,11 @@ public class Episode implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
-        dest.writeString(title);
-        dest.writeString(url);
-        dest.writeString(image);
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(num);
+        parcel.writeString(title);
+        parcel.writeString(url);
+        parcel.writeString(image);
     }
 }

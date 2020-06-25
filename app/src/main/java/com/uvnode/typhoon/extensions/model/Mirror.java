@@ -3,17 +3,10 @@ package com.uvnode.typhoon.extensions.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by Riyadh on 7/23/2017.
- */
-
 public class Mirror implements Parcelable{
 
     private int id;
     private String name, link;
-
-    public Mirror() {
-    }
 
     protected Mirror(Parcel in) {
         id = in.readInt();

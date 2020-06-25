@@ -2,9 +2,6 @@ package com.uvnode.typhoon.extensions.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by Riyadh on 6/6/2016.
- */
 public class SeriesList {
 
     private String name;

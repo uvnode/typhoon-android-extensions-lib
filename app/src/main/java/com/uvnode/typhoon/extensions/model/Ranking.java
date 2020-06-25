@@ -3,9 +3,6 @@ package com.uvnode.typhoon.extensions.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by Riyadh on 5/31/2016.
- */
 public class Ranking implements Parcelable {
 
     private String id, name, url;

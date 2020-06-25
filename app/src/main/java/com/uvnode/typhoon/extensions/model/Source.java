@@ -3,10 +3,6 @@ package com.uvnode.typhoon.extensions.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by Riyadh on 10/29/2016.
- */
-
 public class Source implements Parcelable {
     private String id, name, url, image, description;
     private boolean ready;
