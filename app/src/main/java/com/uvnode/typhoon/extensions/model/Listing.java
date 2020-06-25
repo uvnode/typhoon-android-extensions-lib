@@ -7,6 +7,8 @@ public class Listing {
     private String id, name;
     private ArrayList<Episode> episodes;
 
+    public Listing() {}
+
     public String getId() {
         return id;
     }

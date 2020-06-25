@@ -7,6 +7,8 @@ public class Episode implements Parcelable {
 
     private String id, num, title, url, image;
 
+    public Episode() {}
+
     protected Episode(Parcel in) {
         id = in.readString();
         num = in.readString();

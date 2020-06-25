@@ -8,6 +8,8 @@ public class Mirror implements Parcelable{
     private int id;
     private String name, link;
 
+    public Mirror() {}
+
     protected Mirror(Parcel in) {
         id = in.readInt();
         name = in.readString();
