@@ -30,7 +30,7 @@ public abstract class MetaSource {
 
     public abstract void getEpisodes(ApiCallbacks apiConsumer, Series series);
 
-    public abstract void getVideoUrl(ApiCallbacks apiConsumer, Episode episode);
+    public abstract void getVideoUrls(ApiCallbacks apiConsumer, Series series, Episode episode);
 
     public abstract void search(ApiCallbacks apiConsumer, String query, int page);
 
