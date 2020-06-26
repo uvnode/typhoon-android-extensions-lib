@@ -16,13 +16,13 @@ public class ApiResponse {
     public static final int UPDATE = 2;
 
     private Object payload;
-    private ApiResponse.Result responseResult;
+    private int responseResult;
 
-    public ApiResponse(Result result) {
+    public ApiResponse(int result) {
         this.responseResult = result;
     }
 
-    public Result getResult() {
+    public int getResult() {
         return responseResult;
     }
 
