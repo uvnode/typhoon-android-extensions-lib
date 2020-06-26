@@ -1,6 +1,7 @@
 package com.uvnode.typhoon.extensions;
 
 import com.uvnode.typhoon.extensions.api.ApiCallbacks;
+import com.uvnode.typhoon.extensions.model.Episode;
 import com.uvnode.typhoon.extensions.model.Listing;
 import com.uvnode.typhoon.extensions.model.Ranking;
 import com.uvnode.typhoon.extensions.model.Series;
@@ -29,7 +30,7 @@ public abstract class MetaSource {
 
     public abstract void getEpisodes(ApiCallbacks apiConsumer, Series series);
 
-    public abstract void getVideoLinks(ApiCallbacks apiConsumer, String episodeLink);
+    public abstract void getVideoUrl(ApiCallbacks apiConsumer, Episode episode);
 
     public abstract void search(ApiCallbacks apiConsumer, String query, int page);
 
