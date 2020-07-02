@@ -1,8 +1,9 @@
 package com.uvnode.typhoon.extensions;
 
-import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.uvnode.typhoon.extensions.source.MetaSource;
 
 import java.util.ArrayList;
 
@@ -90,6 +91,10 @@ public class Extension implements Parcelable {
 
     public ArrayList<MetaSource> getSources() {
         return sources;
+    }
+
+    public String getApiVersion() {
+        return BuildConfig.VERSION_NAME;
     }
 
     @Override

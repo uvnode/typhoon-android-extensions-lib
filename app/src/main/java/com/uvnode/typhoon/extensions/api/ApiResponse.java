@@ -16,7 +16,6 @@ public class ApiResponse {
 
     private Object payload;
     private int responseResult;
-    private boolean isSuccess;
 
     public ApiResponse(int result) {
         this.responseResult = result;
@@ -26,11 +25,11 @@ public class ApiResponse {
         return responseResult;
     }
 
-    public Object getPayload() {
+    public Object get() {
         return payload;
     }
 
-    public void setPayload(Object payload) {
+    public void set(Object payload) {
         this.payload = payload;
     }
 }

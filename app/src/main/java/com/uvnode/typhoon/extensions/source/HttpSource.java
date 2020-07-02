@@ -1,4 +1,4 @@
-package com.uvnode.typhoon.extensions;
+package com.uvnode.typhoon.extensions.source;
 
 import com.uvnode.typhoon.extensions.api.ApiCallbacks;
 import com.uvnode.typhoon.extensions.executor.JSEClient;
@@ -12,11 +12,11 @@ public abstract class HttpSource extends MetaSource implements Rankable, Filtera
     private OkHttpClient okClient;
     private JSEClient jseClient;
 
-    public OkHttpClient getOkClient() {
+    public final OkHttpClient getOkClient() {
         return okClient;
     }
 
-    public JSEClient getJseClient() { return jseClient; };
+    public final JSEClient getJseClient() { return jseClient; };
 
     public void setOkClient(OkHttpClient okClient) {
         this.okClient = okClient;

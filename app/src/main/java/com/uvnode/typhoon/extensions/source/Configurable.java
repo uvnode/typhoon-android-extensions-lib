@@ -1,4 +1,4 @@
-package com.uvnode.typhoon.extensions;
+package com.uvnode.typhoon.extensions.source;
 
 import androidx.preference.PreferenceScreen;
 

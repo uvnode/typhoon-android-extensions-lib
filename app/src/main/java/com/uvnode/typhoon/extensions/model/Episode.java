@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class Episode implements Parcelable {
 
-    private String id, num, title, url, image;
+    private String id, num, title, uri, image;
 
     public Episode() {}
 
@@ -13,7 +13,7 @@ public class Episode implements Parcelable {
         id = in.readString();
         num = in.readString();
         title = in.readString();
-        url = in.readString();
+        uri = in.readString();
         image = in.readString();
     }
 
@@ -54,11 +54,11 @@ public class Episode implements Parcelable {
     }
 
     public String getUrl()    {
-        return url;
+        return uri;
     }
 
-    public void setUrl(String url)  {
-        this.url = url;
+    public void setUrl(String uri)  {
+        this.uri = uri;
     }
 
     public String getImage()    {
@@ -79,7 +79,7 @@ public class Episode implements Parcelable {
         parcel.writeString(id);
         parcel.writeString(num);
         parcel.writeString(title);
-        parcel.writeString(url);
+        parcel.writeString(uri);
         parcel.writeString(image);
     }
 }

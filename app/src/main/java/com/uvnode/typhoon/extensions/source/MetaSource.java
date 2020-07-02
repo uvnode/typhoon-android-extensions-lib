@@ -1,4 +1,4 @@
-package com.uvnode.typhoon.extensions;
+package com.uvnode.typhoon.extensions.source;
 
 import com.uvnode.typhoon.extensions.api.ApiCallbacks;
 import com.uvnode.typhoon.extensions.model.Episode;
@@ -14,7 +14,7 @@ public abstract class MetaSource {
 
     private boolean enabled;
 
-    public boolean isEnabled() {
+    public final boolean isEnabled() {
         return enabled;
     }
 

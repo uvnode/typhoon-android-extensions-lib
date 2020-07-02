@@ -5,8 +5,8 @@ import android.os.Parcelable;
 
 public class Series implements Parcelable {
 
-    private String source, id, url, title, image, description;
-    private String alternateTitles[], genres[];
+    private String source, id, uri, title, image, description;
+    private String alternateTitles[];
     private boolean completed;
 
     public Series() {
@@ -15,12 +15,11 @@ public class Series implements Parcelable {
     protected Series(Parcel in) {
         source = in.readString();
         id = in.readString();
-        url = in.readString();
+        uri = in.readString();
         title = in.readString();
         image = in.readString();
         description = in.readString();
         //alternateTitles = in.createStringArray();
-        //genres = in.createStringArray();
         completed = in.readByte() != 0;
     }
 
@@ -53,11 +52,11 @@ public class Series implements Parcelable {
     }
 
     public String getUrl()  {
-        return url;
+        return uri;
     }
 
-    public void setUrl(String url)    {
-        this.url = url;
+    public void setUrl(String uri)    {
+        this.uri = uri;
     }
 
     public String getTitle()    {
@@ -92,14 +91,6 @@ public class Series implements Parcelable {
         this.alternateTitles = alternateTitles;
     }
 
-    public String[] getGenres()  {
-        return genres;
-    }
-
-    public void getGenres(String genres[])  {
-        this.genres = genres;
-    }
-
     public boolean isCompleted()   {
         return completed;
     }
@@ -117,7 +108,7 @@ public class Series implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(source);
         dest.writeString(id);
-        dest.writeString(url);
+        dest.writeString(uri);
         dest.writeString(title);
         dest.writeString(image);
         dest.writeString(description);
