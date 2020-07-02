@@ -32,7 +32,5 @@ public abstract class MetaSource {
 
     public abstract void getVideoUris(ApiCallbacks callbacks, Series series, Episode episode);
 
-    public abstract void search(ApiCallbacks callbacks, String query, int page);
-
     public abstract Source getSource();
 }

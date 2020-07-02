@@ -93,7 +93,7 @@ public class Extension implements Parcelable {
         return sources;
     }
 
-    public String getApiVersion() {
+    public final String getApiVersion() {
         return BuildConfig.VERSION_NAME;
     }
 

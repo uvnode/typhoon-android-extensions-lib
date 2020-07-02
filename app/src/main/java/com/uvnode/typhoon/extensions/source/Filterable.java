@@ -9,4 +9,5 @@ public interface Filterable {
 
     void getSeriesList(ApiCallbacks callbacks, ArrayList<Filter> filters);
 
+    void search(ApiCallbacks callbacks, String query, int page);
 }
