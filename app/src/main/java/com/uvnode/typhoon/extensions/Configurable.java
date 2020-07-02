@@ -4,5 +4,5 @@ import androidx.preference.PreferenceScreen;
 
 public interface Configurable {
 
-    public void setPreferences(PreferenceScreen preferences);
+    void setPreferences(PreferenceScreen preferences);
 }

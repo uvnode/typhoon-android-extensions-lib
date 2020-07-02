@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class Series implements Parcelable {
 
-    private String source, id, url, title, image, summary;
+    private String source, id, url, title, image, description;
     private String alternateTitles[], genres[];
     private boolean completed;
 
@@ -18,7 +18,7 @@ public class Series implements Parcelable {
         url = in.readString();
         title = in.readString();
         image = in.readString();
-        summary = in.readString();
+        description = in.readString();
         //alternateTitles = in.createStringArray();
         //genres = in.createStringArray();
         completed = in.readByte() != 0;
@@ -76,12 +76,12 @@ public class Series implements Parcelable {
         this.image = image.replace(" ", "%20");
     }
 
-    public String getSummary()  {
-        return summary;
+    public String getDescription()  {
+        return description;
     }
 
-    public void setSummary(String summary)    {
-        this.summary = summary;
+    public void setDescription(String description)    {
+        this.description = description;
     }
 
     public String[] getAlternateTitles()  {
@@ -120,7 +120,7 @@ public class Series implements Parcelable {
         dest.writeString(url);
         dest.writeString(title);
         dest.writeString(image);
-        dest.writeString(summary);
+        dest.writeString(description);
         dest.writeByte((byte) (completed ? 1 : 0));
     }
 

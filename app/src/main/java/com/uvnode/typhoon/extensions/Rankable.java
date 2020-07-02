@@ -5,7 +5,7 @@ import com.uvnode.typhoon.extensions.model.Ranking;
 
 public interface Rankable {
 
-    public void getRankings(ApiCallbacks callbacks);
+    void getRankings(ApiCallbacks callbacks);
 
-    public void getSeriesInRanking(ApiCallbacks callbacks, Ranking ranking);
+    void getSeriesInRanking(ApiCallbacks callbacks, Ranking ranking);
 }

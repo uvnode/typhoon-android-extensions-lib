@@ -26,5 +26,5 @@ public abstract class HttpSource extends MetaSource implements Rankable, Filtera
 
     public abstract void getListings(ApiCallbacks apiConsumer, Series series);
 
-    public abstract void getEpisodes(ApiCallbacks apiConsumer, Series series, Listing listing);
+    public abstract void getEpisodesList(ApiCallbacks apiConsumer, Series series, Listing listing);
 }

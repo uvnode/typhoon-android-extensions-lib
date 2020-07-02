@@ -1,7 +1,7 @@
 package com.uvnode.typhoon.extensions.api;
 
-import com.uvnode.typhoon.extensions.ExtensionHolder;
+import com.uvnode.typhoon.extensions.Extension;
 
 public interface LoadExtension {
-    public ExtensionHolder getExtension();
+    Extension getExtension();
 }

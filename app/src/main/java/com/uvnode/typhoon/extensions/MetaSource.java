@@ -26,9 +26,11 @@ public abstract class MetaSource {
 
     public abstract void getSeriesList(ApiCallbacks callbacks);
 
-    public abstract void getEpisodes(ApiCallbacks callbacks, Series series);
+    public abstract void getEpisode(ApiCallbacks callbacks);
 
-    public abstract void getVideoUrls(ApiCallbacks callbacks, Series series, Episode episode);
+    public abstract void getEpisodesList(ApiCallbacks callbacks, Series series);
+
+    public abstract void getVideoUris(ApiCallbacks callbacks, Series series, Episode episode);
 
     public abstract void search(ApiCallbacks callbacks, String query, int page);
 
