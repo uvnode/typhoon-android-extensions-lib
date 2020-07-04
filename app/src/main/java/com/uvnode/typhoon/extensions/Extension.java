@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Extension implements Parcelable {
 
-    private String name, icon, version, author, packageName;
+    private String name, version, author, packageName;
     private int versionCode;
     private ArrayList<MetaSource> sources;
 
@@ -18,7 +18,6 @@ public class Extension implements Parcelable {
 
     protected Extension(Parcel in) {
         name = in.readString();
-        icon = in.readString();
         version = in.readString();
         author = in.readString();
         packageName = in.readString();
@@ -43,14 +42,6 @@ public class Extension implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
     }
 
     public String getVersion() {
@@ -105,7 +96,6 @@ public class Extension implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
-        parcel.writeString(icon);
         parcel.writeString(version);
         parcel.writeString(author);
         parcel.writeString(packageName);
