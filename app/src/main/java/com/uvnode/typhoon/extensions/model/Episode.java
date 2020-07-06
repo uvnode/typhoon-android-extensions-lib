@@ -53,11 +53,11 @@ public class Episode implements Parcelable {
         this.title = title;
     }
 
-    public String getUrl()    {
+    public String getUri()    {
         return uri;
     }
 
-    public void setUrl(String uri)  {
+    public void setUri(String uri)  {
         this.uri = uri;
     }
 

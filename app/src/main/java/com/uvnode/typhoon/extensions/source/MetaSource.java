@@ -18,7 +18,7 @@ public abstract class MetaSource {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public final void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -26,7 +26,7 @@ public abstract class MetaSource {
 
     public abstract void getSeriesList(ApiCallbacks callbacks);
 
-    public abstract void getEpisode(ApiCallbacks callbacks);
+    public abstract void getEpisode(ApiCallbacks callbacks, Episode episode);
 
     public abstract void getEpisodesList(ApiCallbacks callbacks, Series series);
 

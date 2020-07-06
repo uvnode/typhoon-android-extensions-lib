@@ -2,19 +2,19 @@ package com.uvnode.typhoon.extensions.model;
 
 public class Video {
 
-    private String url, name;
+    private String uri, name;
 
-    public Video(String url, String name) {
-        setUrl(url);
+    public Video(String uri, String name) {
+        setUri(uri);
         setName(name);
     }
 
-    public String getUrl() {
-        return url;
+    public String getUri() {
+        return uri;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
     public String getName() {

@@ -7,5 +7,5 @@ public interface Rankable {
 
     void getRankings(ApiCallbacks callbacks);
 
-    void getSeriesInRanking(ApiCallbacks callbacks, Ranking ranking);
+    void getSeriesList(ApiCallbacks callbacks, Ranking ranking);
 }

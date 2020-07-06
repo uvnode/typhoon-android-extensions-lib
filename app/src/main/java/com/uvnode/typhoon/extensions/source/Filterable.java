@@ -7,5 +7,5 @@ import java.util.ArrayList;
 
 public interface Filterable {
 
-    void search(ApiCallbacks callbacks, ArrayList<Filter> filters, String query, int page);
+    void search(ApiCallbacks callbacks, ArrayList<Filter> filters, int page);
 }
