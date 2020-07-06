@@ -5,13 +5,12 @@ import android.os.Parcelable;
 
 public class Mirror implements Parcelable{
 
-    private int id;
-    private String name, url;
+    private String id, name, url;
 
     public Mirror() {}
 
     protected Mirror(Parcel in) {
-        id = in.readInt();
+        id = in.readString();
         name = in.readString();
         url = in.readString();
     }
@@ -28,11 +27,11 @@ public class Mirror implements Parcelable{
         }
     };
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -64,7 +63,7 @@ public class Mirror implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
+        parcel.writeString(id);
         parcel.writeString(name);
         parcel.writeString(url);
     }

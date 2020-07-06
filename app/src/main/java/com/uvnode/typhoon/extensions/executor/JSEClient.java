@@ -58,10 +58,6 @@ public class JSEClient {
     }
 }
 
-class JETransmissionEvent {
-    public String data;
-}
-
 class JSEInnerClient extends WebViewClient {
 
     private int delayType = 0;
