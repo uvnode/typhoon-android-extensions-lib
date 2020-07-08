@@ -7,25 +7,23 @@ public class Video {
     public static final int FORMAT_HLS = 3;
 
     private String uri, name;
+    private int format;
 
-    public Video(String uri, String name) {
-        setUri(uri);
-        setName(name);
+    public Video(String uri, String name, int format) {
+        this.uri = uri;
+        this.name = name;
+        this.format = format;
     }
 
     public String getUri() {
         return uri;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getFormat() {
+        return format;
     }
 }
