@@ -80,7 +80,7 @@ public class JSEClient {
         }
     }
 
-    class JSEResponseEvent {
+    public class JSEResponseEvent {
         public String url, data;
     }
 
