@@ -37,7 +37,7 @@ public class JSEClient {
         return webView.getSettings().getUserAgentString();
     }
 
-    public void loadUrl(final String url) {
+    private void loadUrl(final String url) {
         Handler mainHandler = new Handler(this.context.getMainLooper());
         mainHandler.post(new Runnable() {
             @Override
@@ -62,7 +62,7 @@ public class JSEClient {
 
     public void inBackground(BrowserEventCallback callback, BrowserEvent event) {
         callbacksMaps.put(event.url, callback);
-        this.webView.loadUrl(event.url);
+        loadUrl(event.url);
     }
 
     public void inForeground() {
