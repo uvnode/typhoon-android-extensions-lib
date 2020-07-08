@@ -51,7 +51,7 @@ public class JSEClient {
         public String url;
     }
 
-    interface BrowserEventCallback {
+    public interface BrowserEventCallback {
         void onComplete(JSEResponseEvent event);
     }
 
