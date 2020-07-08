@@ -9,18 +9,12 @@ public class VideoResponse {
     public static final int ERROR_SOURCE_NOT_FOUND = 2;
     public static final int ERROR_LINKS_NOT_FOUND = 3;
 
-    public static final int FORMAT_MP4 = 1;
-    public static final int FORMAT_DASH = 2;
-    public static final int FORMAT_HLS = 3;
-
     private ArrayList uris;
-    private int type, format, errorCode;
+    private int errorCode;
     private boolean success;
 
-    public VideoResponse(ArrayList uris, int type, int format, boolean success) {
+    public VideoResponse(ArrayList uris, boolean success) {
         this.uris = uris;
-        this.type = type;
-        this.format = format;
         this.success = success;
     }
 
@@ -34,14 +28,6 @@ public class VideoResponse {
 
     public ArrayList getUris() {
         return uris;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public int getFormat() {
-        return format;
     }
 
     public boolean isSuccess() {
