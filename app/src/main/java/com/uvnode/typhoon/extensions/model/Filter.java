@@ -1,5 +1,7 @@
 package com.uvnode.typhoon.extensions.model;
 
+import java.util.ArrayList;
+
 public class Filter<T> {
 
     public String name;
@@ -41,6 +43,12 @@ public class Filter<T> {
 
         public boolean isExcluded() {
             return this.state == STATE_EXCLUDE;
+        }
+    }
+
+    public static class Group<U> extends Filter<ArrayList<U>> {
+        public Group(String name, ArrayList<U> state) {
+            super(name, state);
         }
     }
 
