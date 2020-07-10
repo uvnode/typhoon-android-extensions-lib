@@ -7,5 +7,7 @@ import java.util.ArrayList;
 
 public interface Filterable {
 
+    ArrayList<Filter> getFilters();
+
     void search(ApiCallbacks callbacks, ArrayList<Filter> filters, int page);
 }
