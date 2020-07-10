@@ -8,7 +8,7 @@ public class ApiError {
         this.message = message;
     }
 
-    public ApiError(Exception e) {
+    public ApiError(Throwable e) {
         this.message = e.getMessage();
     }
 

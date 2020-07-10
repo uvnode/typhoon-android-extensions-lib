@@ -25,9 +25,9 @@ public class Filter<T> {
     }
 
     public static class TriState extends Filter<Integer> {
-        static final int STATE_IGNORE = 0;
-        static final int STATE_INCLUDE = 1;
-        static final int STATE_EXCLUDE = 2;
+        public static final int STATE_IGNORE = 0;
+        public static final int STATE_INCLUDE = 1;
+        public static final int STATE_EXCLUDE = 2;
 
         public TriState(String name, Integer state) {
             super(name, state);
