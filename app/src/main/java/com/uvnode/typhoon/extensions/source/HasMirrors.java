@@ -7,5 +7,5 @@ import com.uvnode.typhoon.extensions.model.Series;
 
 public interface HasMirrors {
 
-    void getVideoUris(ApiCallbacks callbacks, Series series, Episode episode, Mirror mirror);
+    void getVideoUris(ApiCallbacks callbacks, Series series, Episode episode, Mirror mirror) throws Exception;
 }

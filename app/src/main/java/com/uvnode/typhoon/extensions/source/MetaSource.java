@@ -22,15 +22,15 @@ public abstract class MetaSource {
         this.enabled = enabled;
     }
 
-    public abstract void getSeries(ApiCallbacks callbacks, Series series);
+    public abstract void getSeries(ApiCallbacks callbacks, Series series) throws Exception;
 
-    public abstract void getSeriesList(ApiCallbacks callbacks);
+    public abstract void getSeriesList(ApiCallbacks callbacks) throws Exception;
 
-    public abstract void getEpisode(ApiCallbacks callbacks, Episode episode);
+    public abstract void getEpisode(ApiCallbacks callbacks, Episode episode) throws Exception;
 
-    public abstract void getEpisodesList(ApiCallbacks callbacks, Series series);
+    public abstract void getEpisodesList(ApiCallbacks callbacks, Series series) throws Exception;
 
-    public abstract void getVideoUris(ApiCallbacks callbacks, Series series, Episode episode);
+    public abstract void getVideoUris(ApiCallbacks callbacks, Series series, Episode episode) throws Exception;
 
     public abstract Source getSource();
 }

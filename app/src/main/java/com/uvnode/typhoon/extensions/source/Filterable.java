@@ -9,5 +9,5 @@ public interface Filterable {
 
     ArrayList<Filter> getFilters();
 
-    void search(ApiCallbacks callbacks, ArrayList<Filter> filters, int page);
+    void search(ApiCallbacks callbacks, ArrayList<Filter> filters, int page) throws Exception;
 }
