@@ -88,7 +88,7 @@ public class JSEClient {
 
     public void inBackground(BrowserEventCallback callback, BrowserEvent event) {
         String key = getUrlKey(event.url);
-        callbacksMaps.put(getUrlKey(key), callback);
+        callbacksMaps.put(key, callback);
         loadUrl(event.url);
         Log.d(TAG, "inBackground: " + event.url);
         Log.d(TAG, "inBackground: " + key);
