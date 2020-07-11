@@ -52,13 +52,13 @@ public class JSEClient {
     }
 
     public interface BrowserEventCallback {
-        void onComplete(JSEResponseEvent event);
+        void onReceive(JSEResponseEvent event);
     }
 
-    @Subscribe
-    public void onBrowserEvent(JSEResponseEvent event) {
-        callbacksMaps.remove(event.url).onComplete(event);
-    }
+//    @Subscribe
+//    public void onBrowserEvent(JSEResponseEvent event) {
+//
+//    }
 
     public void inBackground(BrowserEventCallback callback, BrowserEvent event) {
         callbacksMaps.put(event.url, callback);
@@ -75,13 +75,18 @@ public class JSEClient {
             jseResponseEvent.url = url;
             jseResponseEvent.data = html;
 
-            EventBus.getDefault().postSticky(jseResponseEvent);
-            webView.loadUrl("about:blank");
+//            EventBus.getDefault().postSticky(jseResponseEvent);
+            callbacksMaps.get(url).onReceive(jseResponseEvent);
         }
     }
 
     public class JSEResponseEvent {
         public String url, data;
+
+        public final void complete() {
+            callbacksMaps.remove(url).onReceive(this);
+            webView.loadUrl("about:blank");
+        }
     }
 
     static class JSEInnerClient extends WebViewClient {
