@@ -1,6 +1,7 @@
 package com.uvnode.typhoon.extensions.executor;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
@@ -86,12 +87,21 @@ public class JSEClient {
     }
 
     public void inBackground(BrowserEventCallback callback, BrowserEvent event) {
-        callbacksMaps.put(event.url, callback);
+        String key = getUrlKey(event.url);
+        callbacksMaps.put(getUrlKey(key), callback);
         loadUrl(event.url);
         Log.d(TAG, "inBackground: " + event.url);
+        Log.d(TAG, "inBackground: " + key);
     }
 
     public void inForeground() {
+    }
+
+    private String getUrlKey(String url) {
+        Uri uri = Uri.parse(url);
+        String key = uri.getAuthority() + uri.getPath();
+
+        return key;
     }
 
     class HtmlAccessor {
@@ -102,7 +112,7 @@ public class JSEClient {
             jseResponseEvent.data = html;
 
 //            EventBus.getDefault().postSticky(jseResponseEvent);
-            callbacksMaps.get(url).onReceive(jseResponseEvent);
+            callbacksMaps.get(getUrlKey(url)).onReceive(jseResponseEvent);
         }
     }
 
@@ -110,7 +120,7 @@ public class JSEClient {
         public String url, data;
 
         public final void complete() {
-            callbacksMaps.remove(url);
+            callbacksMaps.remove(getUrlKey(url));
             loadUrl("about:blank");
         }
     }
