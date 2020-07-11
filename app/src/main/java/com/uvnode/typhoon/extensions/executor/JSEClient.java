@@ -1,9 +1,13 @@
 package com.uvnode.typhoon.extensions.executor;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
+import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
+import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -13,6 +17,8 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.HashMap;
 
 public class JSEClient {
+
+    private static final String TAG = "JSEClient";
 
     private Context context;
     private JSEInnerClient client;
@@ -42,6 +48,26 @@ public class JSEClient {
         return userAgent;
     }
 
+    public void reset() {
+        webView.clearCache(true);
+        webView.clearHistory();
+
+        CookieManager cookieManager = CookieManager.getInstance();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            cookieManager.removeAllCookies(new ValueCallback<Boolean>() {
+                // a callback which is executed when the cookies have been removed
+                @Override
+                public void onReceiveValue(Boolean aBoolean) {
+                    Log.d(TAG, "Cookie removed: " + aBoolean);
+                }
+            });
+        }
+        else cookieManager.removeAllCookie();
+
+        WebStorage.getInstance().deleteAllData();
+    }
+
     private void loadUrl(final String url) {
         mainHandler.post(new Runnable() {
             @Override
@@ -62,6 +88,7 @@ public class JSEClient {
     public void inBackground(BrowserEventCallback callback, BrowserEvent event) {
         callbacksMaps.put(event.url, callback);
         loadUrl(event.url);
+        Log.d(TAG, "inBackground: " + event.url);
     }
 
     public void inForeground() {
@@ -101,7 +128,7 @@ public class JSEClient {
             super.onPageFinished(view, url);
             if(!"about:blank".equals(url)) {
                 view.loadUrl("javascript:HtmlAccessor.getHtml('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>', '" + url + "')");
-                Log.e("page-finished", url);
+                Log.d(TAG, "onPageFinished: " + url);
             }
         }
 
