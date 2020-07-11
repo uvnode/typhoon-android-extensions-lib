@@ -28,7 +28,7 @@ public class JSEClient {
         this.webView.getSettings().setDomStorageEnabled(true);
         this.webView.setWebViewClient(this.client);
 
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
 
         this.webView.addJavascriptInterface(new HtmlAccessor(), "HtmlAccessor");
     }
@@ -54,11 +54,6 @@ public class JSEClient {
     public interface BrowserEventCallback {
         void onReceive(JSEResponseEvent event);
     }
-
-//    @Subscribe
-//    public void onBrowserEvent(JSEResponseEvent event) {
-//
-//    }
 
     public void inBackground(BrowserEventCallback callback, BrowserEvent event) {
         callbacksMaps.put(event.url, callback);
