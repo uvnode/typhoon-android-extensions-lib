@@ -20,6 +20,8 @@ public class JSEClient {
     private Handler mainHandler;
     private HashMap<String, BrowserEventCallback> callbacksMaps;
 
+    private String userAgent;
+
     public JSEClient(Context context) {
         this.context = context;
         this.client = new JSEInnerClient();
@@ -32,11 +34,12 @@ public class JSEClient {
 //        EventBus.getDefault().register(this);
 
         this.webView.addJavascriptInterface(new HtmlAccessor(), "HtmlAccessor");
+        this.userAgent = webView.getSettings().getUserAgentString();
         this.mainHandler = new Handler(this.context.getMainLooper());
     }
 
     public String getUserAgent() {
-        return webView.getSettings().getUserAgentString();
+        return userAgent;
     }
 
     private void loadUrl(final String url) {
