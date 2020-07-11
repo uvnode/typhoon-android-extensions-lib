@@ -84,7 +84,7 @@ public class JSEClient {
         public String url, data;
 
         public final void complete() {
-            callbacksMaps.remove(url).onReceive(this);
+            callbacksMaps.remove(url);
             webView.loadUrl("about:blank");
         }
     }
