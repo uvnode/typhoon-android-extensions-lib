@@ -17,6 +17,7 @@ public class JSEClient {
     private Context context;
     private JSEInnerClient client;
     private WebView webView;
+    private Handler mainHandler;
     private HashMap<String, BrowserEventCallback> callbacksMaps;
 
     public JSEClient(Context context) {
@@ -31,6 +32,7 @@ public class JSEClient {
 //        EventBus.getDefault().register(this);
 
         this.webView.addJavascriptInterface(new HtmlAccessor(), "HtmlAccessor");
+        this.mainHandler = new Handler(this.context.getMainLooper());
     }
 
     public String getUserAgent() {
@@ -38,7 +40,6 @@ public class JSEClient {
     }
 
     private void loadUrl(final String url) {
-        Handler mainHandler = new Handler(this.context.getMainLooper());
         mainHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -80,7 +81,7 @@ public class JSEClient {
 
         public final void complete() {
             callbacksMaps.remove(url);
-            webView.loadUrl("about:blank");
+            loadUrl("about:blank");
         }
     }
 
