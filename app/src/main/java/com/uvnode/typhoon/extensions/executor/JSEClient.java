@@ -91,7 +91,6 @@ public class JSEClient {
         callbacksMaps.put(key, callback);
         loadUrl(event.url);
         Log.d(TAG, "inBackground: " + event.url);
-        Log.d(TAG, "inBackground: " + key);
     }
 
     public void inForeground() {
