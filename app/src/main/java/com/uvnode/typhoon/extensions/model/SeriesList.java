@@ -1,11 +1,12 @@
 package com.uvnode.typhoon.extensions.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SeriesList {
 
     private String name;
-    private ArrayList<String> ids;
+    private List<String> ids;
 
     public String getName() {
         return name;
@@ -15,11 +16,11 @@ public class SeriesList {
         this.name = name;
     }
 
-    public ArrayList<String> getIds() {
+    public List<String> getIds() {
         return ids;
     }
 
-    public void setIds(ArrayList<String> ids) {
+    public void setIds(List<String> ids) {
         this.ids = ids;
     }
 

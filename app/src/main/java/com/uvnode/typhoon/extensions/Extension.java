@@ -6,12 +6,13 @@ import android.os.Parcelable;
 import com.uvnode.typhoon.extensions.source.MetaSource;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Extension implements Parcelable {
 
     private String name, version, author, packageName;
     private int versionCode;
-    private ArrayList<MetaSource> sources;
+    private List<MetaSource> sources;
 
     public Extension() {
     }
@@ -76,11 +77,11 @@ public class Extension implements Parcelable {
         this.versionCode = versionCode;
     }
 
-    public void setSources(ArrayList<MetaSource> sources) {
+    public void setSources(List<MetaSource> sources) {
         this.sources = sources;
     }
 
-    public ArrayList<MetaSource> getSources() {
+    public List<MetaSource> getSources() {
         return sources;
     }
 

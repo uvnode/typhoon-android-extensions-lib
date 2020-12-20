@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class Ranking implements Parcelable {
 
-    private String id, name, url;
+    private String id, name, uri;
 
     public Ranking() {
     }
@@ -13,7 +13,7 @@ public class Ranking implements Parcelable {
     protected Ranking(Parcel in) {
         id = in.readString();
         name = in.readString();
-        url = in.readString();
+        uri = in.readString();
     }
 
     public static final Creator<Series> CREATOR = new Creator<Series>() {
@@ -44,12 +44,12 @@ public class Ranking implements Parcelable {
         this.name = name;
     }
 
-    public String getUrl()  {
-        return url;
+    public String getUri()  {
+        return uri;
     }
 
-    public void setUrl(String url)    {
-        this.url = url;
+    public void setUri(String uri)    {
+        this.uri = uri;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Ranking implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(name);
-        dest.writeString(url);
+        dest.writeString(uri);
     }
 
 

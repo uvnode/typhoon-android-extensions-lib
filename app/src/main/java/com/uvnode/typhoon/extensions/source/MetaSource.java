@@ -7,7 +7,6 @@ import com.uvnode.typhoon.extensions.model.Ranking;
 import com.uvnode.typhoon.extensions.model.Series;
 import com.uvnode.typhoon.extensions.model.Source;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class MetaSource {

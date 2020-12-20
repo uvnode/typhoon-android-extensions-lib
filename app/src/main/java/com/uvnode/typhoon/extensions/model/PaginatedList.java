@@ -1,18 +1,18 @@
 package com.uvnode.typhoon.extensions.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class PaginatedList {
 
-    private ArrayList list;
+    private List list;
     private boolean hasNext;
 
-    public PaginatedList(ArrayList list, boolean hasNext) {
+    public PaginatedList(List list, boolean hasNext) {
         this.list = list;
         this.hasNext = hasNext;
     }
 
-    public ArrayList getList() {
+    public List getList() {
         return list;
     }
 

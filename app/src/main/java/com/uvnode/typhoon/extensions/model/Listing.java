@@ -1,11 +1,11 @@
 package com.uvnode.typhoon.extensions.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Listing {
 
     private String id, name;
-    private ArrayList<Episode> episodes;
+    private List<Episode> episodes;
 
     public Listing() {}
 
@@ -25,11 +25,11 @@ public class Listing {
         this.name = name;
     }
 
-    public ArrayList<Episode> getEpisodes() {
+    public List<Episode> getEpisodes() {
         return episodes;
     }
 
-    public void setEpisodes(ArrayList<Episode> episodes) {
+    public void setEpisodes(List<Episode> episodes) {
         this.episodes = episodes;
     }
 }
