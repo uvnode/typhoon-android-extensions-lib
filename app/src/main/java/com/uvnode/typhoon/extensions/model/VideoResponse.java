@@ -2,7 +2,7 @@ package com.uvnode.typhoon.extensions.model;
 
 import java.util.List;
 
-public class VideoResponse {
+public class VideoResponse implements WatchableResponse {
 
     public static final int ERROR_UNKNOWN = 0;
     public static final int ERROR_TIMEOUT = 1;
