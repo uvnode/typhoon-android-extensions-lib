@@ -4,11 +4,6 @@ import com.uvnode.typhoon.extensions.executor.JSEClient
 import okhttp3.OkHttpClient
 
 abstract class HttpSource : MetaSource(), Rankable, Filterable {
-    var okClient: OkHttpClient? = null
-    var jseClient: JSEClient? = null
-        private set
-
-    fun setJSEClient(jseClient: JSEClient?) {
-        this.jseClient = jseClient
-    }
+    open var okClient: OkHttpClient? = null
+    open var jseClient: JSEClient? = null
 }
