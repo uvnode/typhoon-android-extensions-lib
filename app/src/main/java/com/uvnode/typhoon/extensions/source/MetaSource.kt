@@ -17,5 +17,5 @@ abstract class MetaSource {
     abstract fun getEpisodesList(callbacks: ApiCallbacks, series: Series)
     @Throws(Exception::class)
     abstract fun getVideoUris(callbacks: ApiCallbacks, series: Series, episode: Episode)
-    abstract val source: Source?
+    abstract val source: Source
 }
