@@ -1,7 +1,7 @@
-package com.uvnode.typhoon.extensions.api;
+package com.uvnode.typhoon.extensions.api
 
-import com.uvnode.typhoon.extensions.Extension;
+import com.uvnode.typhoon.extensions.Extension
 
-public interface LoadExtension {
-    Extension getExtension();
+interface LoadExtension {
+    val extension: Extension?
 }

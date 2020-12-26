@@ -1,18 +1,14 @@
-package com.uvnode.typhoon.extensions.api;
+package com.uvnode.typhoon.extensions.api
 
-public class ApiError {
+class ApiError {
+    var message: String?
+        private set
 
-    private String message;
-
-    public ApiError(String message) {
-        this.message = message;
+    constructor(message: String?) {
+        this.message = message
     }
 
-    public ApiError(Throwable e) {
-        this.message = e.getMessage();
-    }
-
-    public String getMessage() {
-        return message;
+    constructor(e: Throwable) {
+        message = e.message
     }
 }

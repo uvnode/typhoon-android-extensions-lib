@@ -1,12 +1,13 @@
-package com.uvnode.typhoon.extensions.source;
+package com.uvnode.typhoon.extensions.source
 
-import com.uvnode.typhoon.extensions.api.ApiCallbacks;
-import com.uvnode.typhoon.extensions.model.Listing;
-import com.uvnode.typhoon.extensions.model.Series;
+import com.uvnode.typhoon.extensions.api.ApiCallbacks
+import com.uvnode.typhoon.extensions.model.Listing
+import com.uvnode.typhoon.extensions.model.Series
 
-public interface HasListings {
+interface HasListings {
+    @Throws(Exception::class)
+    fun getListings(apiConsumer: ApiCallbacks?, series: Series?)
 
-    void getListings(ApiCallbacks apiConsumer, Series series) throws Exception;
-
-    void getEpisodesList(ApiCallbacks apiConsumer, Series series, Listing listing) throws Exception;
+    @Throws(Exception::class)
+    fun getEpisodesList(apiConsumer: ApiCallbacks?, series: Series?, listing: Listing?)
 }

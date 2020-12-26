@@ -1,145 +1,112 @@
-package com.uvnode.typhoon.extensions.executor;
+package com.uvnode.typhoon.extensions.executor
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Handler;
-import android.util.Log;
-import android.webkit.CookieManager;
-import android.webkit.JavascriptInterface;
-import android.webkit.ValueCallback;
-import android.webkit.WebStorage;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.content.Context
+import android.net.Uri
+import android.os.Build
+import android.os.Handler
+import android.util.Log
+import android.webkit.*
+import java.util.*
 
-import java.util.HashMap;
-
-public class JSEClient {
-
-    private static final String TAG = "JSEClient";
-
-    private Context context;
-    private JSEInnerClient client;
-    private WebView webView;
-    private Handler mainHandler;
-    private HashMap<String, BrowserEventCallback> callbacksMaps;
-
-    private String userAgent;
-
-    public JSEClient(Context context) {
-        this.context = context;
-        this.client = new JSEInnerClient();
-        this.callbacksMaps = new HashMap<>();
-        this.webView = new WebView(this.context);
-        this.webView.getSettings().setJavaScriptEnabled(true);
-        this.webView.getSettings().setDomStorageEnabled(true);
-        this.webView.setWebViewClient(this.client);
-
-//        EventBus.getDefault().register(this);
-
-        this.webView.addJavascriptInterface(new HtmlAccessor(), "HtmlAccessor");
-        this.userAgent = webView.getSettings().getUserAgentString();
-        this.mainHandler = new Handler(this.context.getMainLooper());
-    }
-
-    public String getUserAgent() {
-        return userAgent;
-    }
-
-    public void reset() {
-        webView.clearCache(true);
-        webView.clearHistory();
-
-        CookieManager cookieManager = CookieManager.getInstance();
-
+class JSEClient(private val context: Context) {
+    private val client: JSEInnerClient
+    private val webView: WebView
+    private val mainHandler: Handler
+    private val callbacksMaps: HashMap<String, BrowserEventCallback>
+    val userAgent: String
+    fun reset() {
+        webView.clearCache(true)
+        webView.clearHistory()
+        val cookieManager = CookieManager.getInstance()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            cookieManager.removeAllCookies(new ValueCallback<Boolean>() {
+            cookieManager.removeAllCookies { aBoolean ->
                 // a callback which is executed when the cookies have been removed
-                @Override
-                public void onReceiveValue(Boolean aBoolean) {
-                    Log.d(TAG, "Cookie removed: " + aBoolean);
-                }
-            });
-        }
-        else cookieManager.removeAllCookie();
-
-        WebStorage.getInstance().deleteAllData();
-    }
-
-    private void loadUrl(final String url) {
-        mainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                webView.loadUrl(url);
+                Log.d(TAG, "Cookie removed: $aBoolean")
             }
-        });
+        } else cookieManager.removeAllCookie()
+        WebStorage.getInstance().deleteAllData()
     }
 
-    public static class BrowserEvent {
-        public String url;
+    private fun loadUrl(url: String?) {
+        mainHandler.post { webView.loadUrl(url) }
     }
 
-    public interface BrowserEventCallback {
-        void onReceive(JSEResponseEvent event);
+    class BrowserEvent {
+        var url: String? = null
     }
 
-    public void inBackground(BrowserEventCallback callback, BrowserEvent event) {
-        String key = getUrlKey(event.url);
-        callbacksMaps.put(key, callback);
-        loadUrl(event.url);
-        Log.d(TAG, "inBackground: " + event.url);
+    interface BrowserEventCallback {
+        fun onReceive(event: JSEResponseEvent?)
     }
 
-    public void inForeground() {
+    fun inBackground(callback: BrowserEventCallback, event: BrowserEvent) {
+        val key = getUrlKey(event.url)
+        callbacksMaps[key] = callback
+        loadUrl(event.url)
+        Log.d(TAG, "inBackground: " + event.url)
     }
 
-    private String getUrlKey(String url) {
-        Uri uri = Uri.parse(url);
-        String key = uri.getAuthority() + uri.getPath();
-
-        return key;
+    fun inForeground() {}
+    private fun getUrlKey(url: String?): String {
+        val uri = Uri.parse(url)
+        return uri.authority + uri.path
     }
 
-    class HtmlAccessor {
+    internal inner class HtmlAccessor {
         @JavascriptInterface
-        public void getHtml(String html, String url) {
-            JSEResponseEvent jseResponseEvent = new JSEResponseEvent();
-            jseResponseEvent.url = url;
-            jseResponseEvent.data = html;
+        fun getHtml(html: String?, url: String?) {
+            val jseResponseEvent = JSEResponseEvent()
+            jseResponseEvent.url = url
+            jseResponseEvent.data = html
 
 //            EventBus.getDefault().postSticky(jseResponseEvent);
-            callbacksMaps.get(getUrlKey(url)).onReceive(jseResponseEvent);
+            callbacksMaps[getUrlKey(url)]!!.onReceive(jseResponseEvent)
         }
     }
 
-    public class JSEResponseEvent {
-        public String url, data;
-
-        public final void complete() {
-            callbacksMaps.remove(getUrlKey(url));
-            loadUrl("about:blank");
+    inner class JSEResponseEvent {
+        var url: String? = null
+        var data: String? = null
+        fun complete() {
+            callbacksMaps.remove(getUrlKey(url))
+            loadUrl("about:blank")
         }
     }
 
-    static class JSEInnerClient extends WebViewClient {
-
-        private int delayType = 0;
-
-        public JSEInnerClient() {
-            delayType = 0;
-        }
-
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-            if(!"about:blank".equals(url)) {
-                view.loadUrl("javascript:HtmlAccessor.getHtml('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>', '" + url + "')");
-                Log.d(TAG, "onPageFinished: " + url);
+    internal class JSEInnerClient : WebViewClient() {
+        private var delayType = 0
+        override fun onPageFinished(view: WebView, url: String) {
+            super.onPageFinished(view, url)
+            if ("about:blank" != url) {
+                view.loadUrl("javascript:HtmlAccessor.getHtml('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>', '$url')")
+                Log.d(TAG, "onPageFinished: $url")
             }
         }
 
-        public void setDelayType(int delayType) {
-            this.delayType = delayType;
+        fun setDelayType(delayType: Int) {
+            this.delayType = delayType
         }
+
+        init {
+            delayType = 0
+        }
+    }
+
+    companion object {
+        private const val TAG = "JSEClient"
+    }
+
+    init {
+        client = JSEInnerClient()
+        callbacksMaps = HashMap()
+        webView = WebView(context)
+        webView.settings.javaScriptEnabled = true
+        webView.settings.domStorageEnabled = true
+        webView.webViewClient = client
+
+//        EventBus.getDefault().register(this);
+        webView.addJavascriptInterface(HtmlAccessor(), "HtmlAccessor")
+        userAgent = webView.settings.userAgentString
+        mainHandler = Handler(context.mainLooper)
     }
 }

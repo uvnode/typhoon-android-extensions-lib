@@ -1,101 +1,50 @@
-package com.uvnode.typhoon.extensions.model;
+package com.uvnode.typhoon.extensions.model
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.os.Parcel
+import android.os.Parcelable
 
-public class Source implements Parcelable {
-    private String id, name, url, image, description;
-    private boolean ready;
+class Source : Parcelable {
+    var id: String? = null
+    var name: String? = null
+    var url: String? = null
+    var image: String? = null
+    var description: String? = null
+    var isReady = false
 
-    public Source() {
+    constructor() {}
+    protected constructor(`in`: Parcel) {
+        id = `in`.readString()
+        name = `in`.readString()
+        url = `in`.readString()
+        image = `in`.readString()
+        description = `in`.readString()
+        isReady = `in`.readByte().toInt() != 0
     }
 
-    protected Source(Parcel in) {
-        id = in.readString();
-        name = in.readString();
-        url = in.readString();
-        image = in.readString();
-        description = in.readString();
-        ready = in.readByte() != 0;
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(id)
+        dest.writeString(name)
+        dest.writeString(url)
+        dest.writeString(image)
+        dest.writeString(description)
+        dest.writeByte((if (isReady) 1 else 0).toByte())
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
-        dest.writeString(name);
-        dest.writeString(url);
-        dest.writeString(image);
-        dest.writeString(description);
-        dest.writeByte((byte) (ready ? 1 : 0));
+    override fun describeContents(): Int {
+        return 0
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    override fun toString(): String {
+        return name!!
     }
 
-    public static final Creator<Source> CREATOR = new Creator<Source>() {
-        @Override
-        public Source createFromParcel(Parcel in) {
-            return new Source(in);
+    companion object CREATOR : Parcelable.Creator<Source> {
+        override fun createFromParcel(parcel: Parcel): Source {
+            return Source(parcel)
         }
 
-        @Override
-        public Source[] newArray(int size) {
-            return new Source[size];
+        override fun newArray(size: Int): Array<Source?> {
+            return arrayOfNulls(size)
         }
-    };
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isReady() {
-        return ready;
-    }
-
-    public void setReady(boolean ready) {
-        this.ready = ready;
-    }
-
-    @Override
-    public String toString() {
-        return getName();
     }
 }

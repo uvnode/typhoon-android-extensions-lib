@@ -1,60 +1,25 @@
-package com.uvnode.typhoon.extensions.model;
+package com.uvnode.typhoon.extensions.model
 
-import java.util.ArrayList;
+import java.util.*
 
-public class Filter<T> {
+open class Filter<T>(var name: String?, var state: T) {
+    open class Text(name: String?, state: String) : Filter<String?>(name, state)
+    class CheckBox(name: String?, state: Boolean) : Filter<Boolean?>(name, state)
+    class TriState(name: String?, state: Int) : Filter<Int?>(name, state) {
+        val isIgnored: Boolean
+            get() = state == STATE_IGNORE
+        val isIncluded: Boolean
+            get() = state == STATE_INCLUDE
+        val isExcluded: Boolean
+            get() = state == STATE_EXCLUDE
 
-    public String name;
-    public T state;
-
-    public Filter(String name, T state) {
-        this.name = name;
-        this.state = state;
-    }
-
-    public static class Text extends Filter<String> {
-        public Text(String name, String state) {
-            super(name, state);
+        companion object {
+            const val STATE_IGNORE = 0
+            const val STATE_INCLUDE = 1
+            const val STATE_EXCLUDE = 2
         }
     }
 
-    public static class CheckBox extends Filter<Boolean> {
-        public CheckBox(String name, Boolean state) {
-            super(name, state);
-        }
-    }
-
-    public static class TriState extends Filter<Integer> {
-        public static final int STATE_IGNORE = 0;
-        public static final int STATE_INCLUDE = 1;
-        public static final int STATE_EXCLUDE = 2;
-
-        public TriState(String name, Integer state) {
-            super(name, state);
-        }
-
-        public boolean isIgnored() {
-            return this.state == STATE_IGNORE;
-        }
-
-        public boolean isIncluded() {
-            return this.state == STATE_INCLUDE;
-        }
-
-        public boolean isExcluded() {
-            return this.state == STATE_EXCLUDE;
-        }
-    }
-
-    public static class Group<U> extends Filter<ArrayList<U>> {
-        public Group(String name, ArrayList<U> state) {
-            super(name, state);
-        }
-    }
-
-    public static class Query extends Filter.Text {
-        public Query(String state) {
-            super("q", state);
-        }
-    }
+    class Group<U>(name: String?, state: ArrayList<U>) : Filter<ArrayList<U>?>(name, state)
+    class Query(state: String) : Text("q", state)
 }

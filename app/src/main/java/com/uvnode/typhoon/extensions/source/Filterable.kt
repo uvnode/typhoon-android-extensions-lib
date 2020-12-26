@@ -1,13 +1,11 @@
-package com.uvnode.typhoon.extensions.source;
+package com.uvnode.typhoon.extensions.source
 
-import com.uvnode.typhoon.extensions.api.ApiCallbacks;
-import com.uvnode.typhoon.extensions.model.Filter;
+import com.uvnode.typhoon.extensions.api.ApiCallbacks
+import com.uvnode.typhoon.extensions.model.Filter
 
-import java.util.List;
+interface Filterable {
+    val filters: List<Filter<*>?>?
 
-public interface Filterable {
-
-    List<Filter> getFilters();
-
-    void search(ApiCallbacks callbacks, List<Filter> filters, int page) throws Exception;
+    @Throws(Exception::class)
+    fun search(callbacks: ApiCallbacks?, filters: List<Filter<*>?>?, page: Int)
 }

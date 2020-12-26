@@ -1,26 +1,17 @@
-package com.uvnode.typhoon.extensions.api;
+package com.uvnode.typhoon.extensions.api
 
-public class ApiResponse {
-
-    public static final int NONE = 0;
-    public static final int SOME = 1;
-
-    private Object payload;
-    private int responseResult;
-
-    public ApiResponse(int result) {
-        this.responseResult = result;
+class ApiResponse(val result: Int) {
+    private var payload: Any? = null
+    fun get(): Any? {
+        return payload
     }
 
-    public int getResult() {
-        return responseResult;
+    fun set(payload: Any?) {
+        this.payload = payload
     }
 
-    public Object get() {
-        return payload;
-    }
-
-    public void set(Object payload) {
-        this.payload = payload;
+    companion object {
+        const val NONE = 0
+        const val SOME = 1
     }
 }

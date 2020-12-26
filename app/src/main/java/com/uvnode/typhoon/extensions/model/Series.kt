@@ -1,119 +1,55 @@
-package com.uvnode.typhoon.extensions.model;
+package com.uvnode.typhoon.extensions.model
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.os.Parcel
+import android.os.Parcelable
 
-public class Series implements Parcelable {
+class Series : Parcelable {
+    var source: String? = null
+    var id: String? = null
+    var uri: String? = null
+    var title: String? = null
+    var image: String? = null
+        private set
+    var description: String? = null
+    var isCompleted = false
 
-    private String source, id, uri, title, image, description;
-    private String alternateTitles[];
-    private boolean completed;
-
-    public Series() {
+    constructor() {}
+    constructor(`in`: Parcel) {
+        source = `in`.readString()
+        id = `in`.readString()
+        uri = `in`.readString()
+        title = `in`.readString()
+        image = `in`.readString()
+        description = `in`.readString()
+        isCompleted = `in`.readByte().toInt() != 0
     }
 
-    protected Series(Parcel in) {
-        source = in.readString();
-        id = in.readString();
-        uri = in.readString();
-        title = in.readString();
-        image = in.readString();
-        description = in.readString();
-        //alternateTitles = in.createStringArray();
-        completed = in.readByte() != 0;
+    fun setImage(image: String) {
+        this.image = image.replace(" ", "%20")
     }
 
-    public static final Creator<Series> CREATOR = new Creator<Series>() {
-        @Override
-        public Series createFromParcel(Parcel in) {
-            return new Series(in);
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(source)
+        dest.writeString(id)
+        dest.writeString(uri)
+        dest.writeString(title)
+        dest.writeString(image)
+        dest.writeString(description)
+        dest.writeByte((if (isCompleted) 1 else 0).toByte())
+    }
+
+    companion object CREATOR : Parcelable.Creator<Series> {
+        override fun createFromParcel(parcel: Parcel): Series {
+            return Series(parcel)
         }
 
-        @Override
-        public Series[] newArray(int size) {
-            return new Series[size];
+        override fun newArray(size: Int): Array<Series?> {
+            return arrayOfNulls(size)
         }
-    };
-
-    public String getSource()   {
-        return source;
     }
-
-    public void setSource(String source)    {
-        this.source = source;
-    }
-
-    public String getId()   {
-        return id;
-    }
-
-    public void setId(String id)    {
-        this.id = id;
-    }
-
-    public String getUri()  {
-        return uri;
-    }
-
-    public void setUri(String uri)    {
-        this.uri = uri;
-    }
-
-    public String getTitle()    {
-        return title;
-    }
-
-    public void setTitle(String title)    {
-        this.title = title;
-    }
-
-    public String getImage()    {
-        return image;
-    }
-
-    public void setImage(String image)    {
-        this.image = image.replace(" ", "%20");
-    }
-
-    public String getDescription()  {
-        return description;
-    }
-
-    public void setDescription(String description)    {
-        this.description = description;
-    }
-
-    public String[] getAlternateTitles()  {
-        return alternateTitles;
-    }
-
-    public void setAlternateTitles(String alternateTitles[])  {
-        this.alternateTitles = alternateTitles;
-    }
-
-    public boolean isCompleted()   {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed)  {
-        this.completed = completed;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(source);
-        dest.writeString(id);
-        dest.writeString(uri);
-        dest.writeString(title);
-        dest.writeString(image);
-        dest.writeString(description);
-        dest.writeByte((byte) (completed ? 1 : 0));
-    }
-
 
 }

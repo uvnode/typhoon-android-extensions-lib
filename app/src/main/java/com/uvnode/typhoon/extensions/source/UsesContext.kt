@@ -1,8 +1,7 @@
-package com.uvnode.typhoon.extensions.source;
+package com.uvnode.typhoon.extensions.source
 
-import android.content.Context;
+import android.content.Context
 
-public interface UsesContext {
-
-    void setContext(Context context);
+interface UsesContext {
+    fun setContext(context: Context?)
 }

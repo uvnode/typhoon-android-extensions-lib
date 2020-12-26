@@ -1,4 +1,3 @@
-package com.uvnode.typhoon.extensions.model;
+package com.uvnode.typhoon.extensions.model
 
-public interface WatchableResponse {
-}
+interface WatchableResponse 

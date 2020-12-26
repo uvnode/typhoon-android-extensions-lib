@@ -1,11 +1,12 @@
-package com.uvnode.typhoon.extensions.source;
+package com.uvnode.typhoon.extensions.source
 
-import com.uvnode.typhoon.extensions.api.ApiCallbacks;
-import com.uvnode.typhoon.extensions.model.Ranking;
+import com.uvnode.typhoon.extensions.api.ApiCallbacks
+import com.uvnode.typhoon.extensions.model.Ranking
 
-public interface Rankable {
+interface Rankable {
+    @Throws(Exception::class)
+    fun getRankings(callbacks: ApiCallbacks?)
 
-    void getRankings(ApiCallbacks callbacks) throws Exception;
-
-    void getSeriesList(ApiCallbacks callbacks, Ranking ranking) throws Exception;
+    @Throws(Exception::class)
+    fun getSeriesList(callbacks: ApiCallbacks?, ranking: Ranking?)
 }
