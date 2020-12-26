@@ -5,14 +5,14 @@ import android.os.Parcelable;
 
 public class Mirror implements Parcelable{
 
-    private String id, name, url;
+    private String id, name, uri;
 
     public Mirror() {}
 
     protected Mirror(Parcel in) {
         id = in.readString();
         name = in.readString();
-        url = in.readString();
+        uri = in.readString();
     }
 
     public static final Creator<Mirror> CREATOR = new Creator<Mirror>() {
@@ -43,17 +43,17 @@ public class Mirror implements Parcelable{
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getUri() {
+        return uri;
     }
 
-    public void setUrl(String link) {
-        this.url = link;
+    public void setUri(String link) {
+        this.uri = link;
     }
 
     @Override
     public String toString() {
-        return "{name: " + name + ", url: " + url + "}";
+        return "{name: " + name + ", uri: " + uri + "}";
     }
 
     @Override
@@ -65,6 +65,6 @@ public class Mirror implements Parcelable{
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(id);
         parcel.writeString(name);
-        parcel.writeString(url);
+        parcel.writeString(uri);
     }
 }
