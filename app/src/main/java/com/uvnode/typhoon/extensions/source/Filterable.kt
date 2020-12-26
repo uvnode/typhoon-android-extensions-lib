@@ -4,8 +4,8 @@ import com.uvnode.typhoon.extensions.api.ApiCallbacks
 import com.uvnode.typhoon.extensions.model.Filter
 
 interface Filterable {
-    val filters: List<Filter<*>?>?
+    val filters: List<Filter<Any>>?
 
     @Throws(Exception::class)
-    fun search(callbacks: ApiCallbacks, filters: List<Filter<*>?>, page: Int)
+    fun search(callbacks: ApiCallbacks, filters: List<Filter<Any>>, page: Int)
 }
