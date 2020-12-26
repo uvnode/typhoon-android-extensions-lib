@@ -1,17 +1,15 @@
 package com.uvnode.typhoon.extensions.model
 
-import java.util.*
-
-open class Filter<T>(var name: String?, var state: T) {
-    open class Text(name: String?, state: String) : Filter<String?>(name, state)
-    class CheckBox(name: String?, state: Boolean) : Filter<Boolean?>(name, state)
-    class TriState(name: String?, state: Int) : Filter<Int?>(name, state) {
-        val isIgnored: Boolean
-            get() = state == STATE_IGNORE
-        val isIncluded: Boolean
-            get() = state == STATE_INCLUDE
-        val isExcluded: Boolean
-            get() = state == STATE_EXCLUDE
+sealed class Filter<T>(val name: String, var state: T) {
+    open class Header(name: String) : Filter<Any>(name, 0)
+    open class Separator(name: String = "") : Filter<Any>(name, 0)
+    abstract class Select<V>(name: String, val values: Array<V>, state: Int = 0) : Filter<Int>(name, state)
+    abstract class Text(name: String, state: String = "") : Filter<String>(name, state)
+    abstract class CheckBox(name: String, state: Boolean = false) : Filter<Boolean>(name, state)
+    abstract class TriState(name: String, state: Int = STATE_IGNORE) : Filter<Int>(name, state) {
+        fun isIgnored() = state == STATE_IGNORE
+        fun isIncluded() = state == STATE_INCLUDE
+        fun isExcluded() = state == STATE_EXCLUDE
 
         companion object {
             const val STATE_IGNORE = 0
@@ -19,7 +17,12 @@ open class Filter<T>(var name: String?, var state: T) {
             const val STATE_EXCLUDE = 2
         }
     }
+    abstract class Group<V>(name: String, state: List<V>): Filter<List<V>>(name, state)
 
-    class Group<U>(name: String?, state: ArrayList<U>) : Filter<ArrayList<U>?>(name, state)
-    class Query(state: String) : Text("q", state)
+    abstract class Sort(name: String, val values: Array<String>, state: Selection? = null)
+        : Filter<Sort.Selection?>(name, state) {
+        data class Selection(val index: Int, val ascending: Boolean)
+    }
+
+    open class Query(state: String) : Text("q", state)
 }
