@@ -8,5 +8,5 @@ interface Rankable {
     fun getRankings(callbacks: ApiCallbacks?)
 
     @Throws(Exception::class)
-    fun getSeriesList(callbacks: ApiCallbacks?, ranking: Ranking?)
+    fun getSeriesList(callbacks: ApiCallbacks, ranking: Ranking)
 }

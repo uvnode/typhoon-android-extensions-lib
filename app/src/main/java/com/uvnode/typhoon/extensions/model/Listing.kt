@@ -1,7 +1,7 @@
 package com.uvnode.typhoon.extensions.model
 
-class Listing {
-    var id: String? = null
-    var name: String? = null
-    var episodes: List<Episode>? = null
-}
+data class Listing(
+    var id: String?,
+    var name: String?,
+    var episodes: List<Episode>?
+)

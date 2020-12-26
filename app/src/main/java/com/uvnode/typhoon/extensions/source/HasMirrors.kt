@@ -7,5 +7,5 @@ import com.uvnode.typhoon.extensions.model.Series
 
 interface HasMirrors {
     @Throws(Exception::class)
-    fun getVideoUris(callbacks: ApiCallbacks?, series: Series?, episode: Episode?, mirror: Mirror?)
+    fun getVideoUris(callbacks: ApiCallbacks, series: Series, episode: Episode, mirror: Mirror)
 }

@@ -7,5 +7,5 @@ interface Filterable {
     val filters: List<Filter<*>?>?
 
     @Throws(Exception::class)
-    fun search(callbacks: ApiCallbacks?, filters: List<Filter<*>?>?, page: Int)
+    fun search(callbacks: ApiCallbacks, filters: List<Filter<*>?>, page: Int)
 }

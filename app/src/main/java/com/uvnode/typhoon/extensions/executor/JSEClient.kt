@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Handler
 import android.util.Log
 import android.webkit.*
+import com.uvnode.typhoon.extensions.api.ApiResponse
 import java.util.*
 
 class JSEClient(private val context: Context) {

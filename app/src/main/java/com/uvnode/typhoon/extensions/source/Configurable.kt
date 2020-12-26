@@ -4,6 +4,6 @@ import android.content.SharedPreferences
 import androidx.preference.PreferenceScreen
 
 interface Configurable {
-    fun addPreferences(preferences: PreferenceScreen?)
-    fun setSharedPreferences(sharedPreferences: SharedPreferences?)
+    fun addPreferences(preferences: PreferenceScreen)
+    fun setSharedPreferences(sharedPreferences: SharedPreferences)
 }

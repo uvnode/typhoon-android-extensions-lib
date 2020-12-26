@@ -1,7 +1,6 @@
 package com.uvnode.typhoon.extensions.model
 
-class Video(val uri: String, val name: String, val format: Int) {
-
+data class Video(val uri: String, val name: String, val format: Int) {
     companion object {
         const val FORMAT_MP4 = 1
         const val FORMAT_DASH = 2
